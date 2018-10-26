@@ -1,0 +1,1 @@
+# create-bare-vue-app
