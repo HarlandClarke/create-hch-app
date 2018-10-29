@@ -1,0 +1,35 @@
+{
+  "defaultJs": {
+    "name": "ES8",
+    "value": "es2017"
+  },
+  "validLangChoices": {
+    "ts": [
+      "ts",
+      "typescript"
+    ],
+    "es2015": [
+      "es2015",
+      "es6",
+      "ecmascript-2015"
+    ],
+    "es2016": [
+      "es2016",
+      "es7",
+      "ecmascript-2016"
+    ],
+    "js": [
+      "es2017",
+      "es8",
+      "ecmascript-2017",
+      "ecmascript",
+      "js"
+    ]
+  },
+  "validFrameworks": [
+    "foundation",
+    "vuetify",
+    "quasar",
+    "none"
+  ]
+}
