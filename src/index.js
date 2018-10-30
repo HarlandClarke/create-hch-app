@@ -109,7 +109,7 @@ const run = async () => {
     output.success('All set!', 'bold')
     output.finalize(choices.appName, result.appDir)
   } catch (e) {
-    const appDir = path.resolve(process.cwd(), '..') + '/' + slug(choices.appName, {lower: true})
+    const appDir = process.cwd() + '/' + slug(choices.appName, {lower: true})
     fs.access(appDir, fs.constants.F_OK, (err) => {
       if (!err) {
         fs.rmdir(appDir, (err) => {

@@ -5,7 +5,7 @@ import slug from 'slug'
 import {CLIError} from '../errors'
 
 const bare = (appName) => {
-  const parentDir = path.resolve(process.cwd(), '..')
+  const parentDir = process.cwd()
   const appDir = parentDir + '/' + slug(appName, {lower: true})
   fs.mkdir(appDir, {recursive: true}, (err) => {
     if (err) throw err
@@ -29,7 +29,7 @@ const nuxt = (appName) => {
     throw new CLIError(result, `Project ${appName} could not be created with npx create-nuxt-app. Returned ${npmInit.status}`)
   }
 
-  const parentDir = path.resolve(process.cwd(), '..')
+  const parentDir = process.cwd()
 
   const nuxt = spawnSync('npm', ['i', 'nuxt'], {
     stdio: 'inherit',
