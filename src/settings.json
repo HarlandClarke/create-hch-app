@@ -1,7 +1,7 @@
 {
   "defaultJs": {
-    "name": "ES8",
-    "value": "es2017"
+    "name": "latest",
+    "value": "js"
   },
   "validLangChoices": {
     "ts": [
@@ -18,10 +18,13 @@
       "es7",
       "ecmascript-2016"
     ],
-    "js": [
+    "es2017": [
       "es2017",
       "es8",
-      "ecmascript-2017",
+      "ecmascript-2017"
+    ],
+    "js": [
+      "latest",
       "ecmascript",
       "js"
     ]
@@ -30,6 +33,11 @@
     "foundation",
     "vuetify",
     "quasar",
+    "none"
+  ],
+  "validHttpLibs": [
+    "superagent",
+    "axios",
     "none"
   ]
 }

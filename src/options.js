@@ -1,5 +1,5 @@
-const {cli} = require('./lib')
-const {validFrameworks, validLangChoices} = require('./settings')
+import {cli} from './lib/installers'
+import {validHttpLibs, validFrameworks, validLangChoices} from './settings'
 
 const optionDefinitions = [
   {
@@ -25,9 +25,28 @@ const optionDefinitions = [
     type: value => (validFrameworks.find(value)) ? value : 'quasar',
     multiple: false
     // defaultValue: 'quasar'
+  },
+  {
+    name: 'http',
+    alias: 'h',
+    type: value => (validHttpLibs.find(value)) ? value : 'axios',
+    multiple: false
+    // defaultValue: 'axios'
+  },
+  {
+    name: 'polyfill',
+    alias: 'p',
+    type: Boolean
+    // defaultValue: false
+  },
+  {
+    name: 'eslint',
+    alias: 'e',
+    type: Boolean
+    // defaultValue: true
   }
 ]
 
-module.exports = {
+export const options = {
   optionDefinitions
 }
