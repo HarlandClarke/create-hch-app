@@ -51,8 +51,8 @@ In the event you don't follow convention and `<my-project>` is something like `"
     - [babel-polyfill](https://babeljs.io/docs/en/babel-polyfill)
 
 By default, the following packages are bundled:
-    - [Babel](https://babeljs.io) (obviously)
-    - [Webpack](https://webpack.js.org) 
+ - [Babel](https://babeljs.io) (obviously)
+ - [Webpack](https://webpack.js.org) 
 
 ## TODO
 
