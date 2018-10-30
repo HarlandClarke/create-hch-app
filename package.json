@@ -4,13 +4,16 @@
   "description": "Creates a Vue app based on certain selections.",
   "bin": "dist/index.js",
   "scripts": {
-    "prepublishOnly": "build.sh",
+    "prepublishOnly": "./node_modules/.bin/babel ./src/ --source-maps-inline --copy-files -d ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/makiten/create-bare-vue-app.git"
   },
+  "files": [
+    "dist/"
+  ],
   "keywords": [
     "vuejs",
     "npx",
