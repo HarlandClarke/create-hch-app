@@ -1,0 +1,43 @@
+{
+  "defaultJs": {
+    "name": "latest",
+    "value": "js"
+  },
+  "validLangChoices": {
+    "ts": [
+      "ts",
+      "typescript"
+    ],
+    "es2015": [
+      "es2015",
+      "es6",
+      "ecmascript-2015"
+    ],
+    "es2016": [
+      "es2016",
+      "es7",
+      "ecmascript-2016"
+    ],
+    "es2017": [
+      "es2017",
+      "es8",
+      "ecmascript-2017"
+    ],
+    "js": [
+      "latest",
+      "ecmascript",
+      "js"
+    ]
+  },
+  "validFrameworks": [
+    "foundation",
+    "vuetify",
+    "quasar",
+    "none"
+  ],
+  "validHttpLibs": [
+    "superagent",
+    "axios",
+    "none"
+  ]
+}

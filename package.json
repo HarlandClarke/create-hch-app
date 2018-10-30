@@ -1,0 +1,45 @@
+{
+  "name": "create-bare-vue-app",
+  "version": "0.1.0",
+  "description": "Creates a Vue app based on certain selections.",
+  "bin": "dist/index.js",
+  "scripts": {
+    "prepublishOnly": "./node_modules/.bin/babel ./src/ --source-maps-inline --copy-files -d ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makiten/create-bare-vue-app.git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "keywords": [
+    "vuejs",
+    "npx",
+    "vue2"
+  ],
+  "author": "Donald Wilcox <dw@angk.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makiten/create-bare-vue-app/issues"
+  },
+  "homepage": "https://github.com/makiten/create-bare-vue-app#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "clear": "^0.1.0",
+    "command-line-args": "^5.0.2",
+    "figlet": "^1.2.1",
+    "inquirer": "^6.2.0",
+    "shelljs": "^0.8.2",
+    "slug": "^0.9.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-minify": "^0.5.0",
+    "babel-preset-minify": "^0.5.0",
+    "jest": "^23.6.0"
+  }
+}
