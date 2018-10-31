@@ -1,0 +1,64 @@
+{
+  "name": "<%= choices.appName %>",
+  "version": "1.0.0",
+  "description": "<%= choices.description %>",
+  "author": "<%= choices.author %>",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "nuxt start",<% if (choices.eslint) { %>,
+    "lint": "vue-cli-service lint",
+    "precommit": "npm run lint"<% } %>
+  },
+  "dependencies": {
+    "vue": "^2.5.17"<% if (choices.http === 'axios') %>,
+    "axios": "~0.18",
+    "vue-axios": "~2"<% } else if (choices.http === 'superagent') { %>,
+    "superagent": "^4.0.0-beta.5"<% } %><% if (choices.framework === 'foundation') { %>,
+    "foundation-sites": "~6.5",
+    "jquery": ">=2.2.0",
+    "what-input": ">=4.1.0"<% } else if (choices.framework === 'bootstrap') { %>,
+    "bootstrap-vue": "~2.0",
+    "bootstrap": "~4.1.3",
+    "jquery": ">=1.9.3",<% } else if (choices.framework === 'vuetify') { %>,
+    "vuetify": "~1.3.0",
+    "vuetify-loader": "~1.0.5"
+    <% } else if (choices.framework === 'quasar') { %><% } %>
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "vue-template-compiler": "^2.5.17"<% if (eslint) { %>,
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0"<% } %><% if (framework === 'vuetify') { %>,
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"<% } %>
+  }<% if (eslint) { %>,
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  }<% } %>,
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
