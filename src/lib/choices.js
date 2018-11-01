@@ -1,9 +1,19 @@
+import slug from 'slug'
 import {defaultJs} from '../settings.json'
 
 const appName = {
   type: 'input',
   name: 'appName',
   message: 'What is the name of your app?',
+  filter: (userInput) => {
+    return new Promise((resolve, reject) => {
+      if (slug) {
+        resolve(slug(userInput, {lower: true}))
+      } else {
+        reject(`Can't slugify ${userInput}. Library not found.`)
+      }
+    })
+  },
   validate: (userInput, answersHash) => {
     if (userInput.length > 0) { // Why am I returning boolean for success, and String for failure?
       return true
@@ -11,6 +21,18 @@ const appName = {
       return 'Your project name must be non-empty.'
     }
   }
+}
+
+const description = {
+  type: 'input',
+  name: 'description',
+  message: 'A description of your app:'
+}
+
+const author = {
+  type: 'input',
+  name: 'author',
+  message: 'Author:'
 }
 
 const useNuxt = {
@@ -65,14 +87,14 @@ const http = {
 
 const polyfill = {
   type: 'confirm',
-  name: 'addPolyfill',
+  name: 'polyfill',
   message: 'Need to install babel-polyfill?',
   default: false
 }
 
 const eslint = {
   type: 'confirm',
-  name: 'addEslint',
+  name: 'eslint',
   message: 'Need to install eslint?',
   default: true
 }
@@ -80,6 +102,8 @@ const eslint = {
 
 export default {
   appName,
+  description,
+  author,
   framework,
   language,
   useNuxt,

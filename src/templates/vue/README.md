@@ -1,4 +1,6 @@
-# vue-demo
+# <%= name %>
+
+> <%= description %>
 
 ## Project setup
 ```

@@ -29,6 +29,14 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    babel: {
+      presets: [<% if (lang === 'js') { %>
+        '@nuxtjs/babel-preset-app'<% } else if (lang === 'es2015') { %>
+        '@babel/preset-es2015'<% } else if (lang === 'es2016') { %>
+        '@babel/preset-es2016'<% } else if (lang === 'es2017') { %>
+        '@babel/preset-es2017'<% } %>
+      <% } %>]
+    },
     vendor: [
       // Examples
       // '~/plugins/myPlugin.js'

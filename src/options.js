@@ -7,6 +7,16 @@ const optionDefinitions = [
     defaultOption: true
   },
   {
+    name: 'description',
+    alias: 'd',
+    type: String
+  },
+  {
+    name: 'author',
+    alias: 'a',
+    type: String
+  },
+  {
     name: 'nuxt',
     alias: 'n',
     type: Boolean
