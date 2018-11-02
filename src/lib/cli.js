@@ -8,6 +8,12 @@ const getQuestionsToPrompt = (currentOptions) => {
   if (!hasOption('appName')) {
     questions.push(choice.appName)
   }
+  if (!hasOption('description')) {
+    questions.push(choice.description)
+  }
+  if (!hasOption('author')) {
+    questions.push(choice.author)
+  }
   if (!hasOption('nuxt')) {
     questions.push(choice.useNuxt)
   }

@@ -1,5 +1,5 @@
 class CLIError extends Error {
-  constructor(code = 1, ...params) {
+  constructor(code, ...params) {
     super(...params)
 
     if (Error.captureStackTrace) {
@@ -11,6 +11,4 @@ class CLIError extends Error {
   }
 }
 
-export default {
-  CLIError
-}
+export default CLIError
