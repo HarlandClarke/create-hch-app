@@ -10,12 +10,22 @@ const setup = (setupDir, data) => {
   const oldPkg = `${setupDir}/_package.json`
   const newPkg = `${setupDir}/package.json`
 
+  const oldGitignore = `${setupDir}/_gitignore`
+  const newGitignore = `${setupDir}/.gitignore`
+
+  const oldEslint = `${setupDir}/_.eslintrc.js`
+  const newEslint = `${setupDir}/.eslintrc.js`
+
   try {
     fs.moveSync(oldPkg, newPkg)
+    fs.moveSync(oldGitignore, newGitignore)
+    fs.moveSync(oldEslint, newEslint)
     ejs.renderFile(newPkg, data, {async: false}, (err, str) => { io.rewriteFile(err, str, newPkg) })
     if (data.nuxt) {
-      const nuxtConfig = `${setupDir}/nuxt.config.js`
-      ejs.renderFile(nuxtConfig, data, {async: true}, (err, str) => { io.rewriteFile(err, str, nuxtConfig) })
+      const oldNuxtConfig = `${setupDir}/_nuxt.config`
+      const newNuxtConfig = `${setupDir}/nuxt.config.js`
+      fs.moveSync(oldNuxtConfig, newNuxtConfig)
+      ejs.renderFile(newNuxtConfig, data, {async: false}, (err, str) => { io.rewriteFile(err, str, newNuxtConfig) })
     }
   } catch (e) {
     throw e
