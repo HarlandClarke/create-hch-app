@@ -39,5 +39,14 @@
     "superagent",
     "axios",
     "none"
+  ],
+  "validCssPreprocessors": [
+    "scss",
+    "less",
+    "stylus"
+  ],
+  "validValidators": [
+    "vuelidate",
+    "none"
   ]
 }

@@ -56,11 +56,15 @@ const warning = (message, styles = []) => {
   console.log(sendMessage(message, 'yellow', styles))
 }
 
-const finalize = (app, projectDir) => {
+const finalize = (app, projectDir, nuxt) => {
   info(`Your project ${app} has been installed to: ${projectDir}\r\n`)
   cliLog('To get started, do:\r\n')
   console.log(chalk`\t{blue.bold $} cd ${projectDir}`)
-  console.log(chalk`\t{blue.bold $} npm run dev\r\n\r\n`)
+  if (nuxt) {
+    console.log(chalk`\t{blue.bold $} npm run dev\r\n\r\n`)
+  } else {
+    console.log(chalk`\t{blue.bold $} npm run serve\r\n\r\n`)
+  }
 }
 
 export default {

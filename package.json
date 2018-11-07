@@ -4,10 +4,11 @@
   "description": "Creates a Vue app based on certain selections.",
   "bin": "dist/index.js",
   "scripts": {
-    "build": "rm -rf .dist/; ./node_modules/.bin/babel ./src/ --source-maps-inline --copy-files -d ./dist",
+    "build": "rm -rf ./dist/* && ./node_modules/.bin/babel ./src/ --source-maps-inline --copy-files -d ./dist",
     "prepublishOnly": "npm run build",
+    "publish": "git push --follow-tags origin master && npm publish",
     "test": "jest",
-    "release": "standard-version"
+    "release": "standard-version && npm run publish"
   },
   "repository": {
     "type": "git",
