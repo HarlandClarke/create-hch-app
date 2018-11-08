@@ -23,6 +23,7 @@ const frameworkInstall = (framework, to, tool) => {
 
 const run = async () => {
   // typical intro stuff
+  clear()
   output.intro()
   // parse command line args, then
   const options = commandLineArgs(optionDefinitions, {stopAtFirstUnknown: true})
@@ -36,14 +37,14 @@ const run = async () => {
 
   clear()
   output.heading()
-  output.cliLog('Ready to go! Installing your project...', 'blue', ['bold', 'underline'])
+  output.success('Ready to go! Installing your project...\r\n')
 
   try {
 
     if (choices.nuxt) {
-      output.info('Installing Nuxt.js...', 'bold')
+      output.info('Installing Nuxt.js...')
     } else {
-      output.info('Creating a normal Vue project...', 'bold')
+      output.info('Creating a normal Vue project...')
     }
 
     let result = baseInstall(choices.appName, choices.nuxt)
@@ -51,11 +52,14 @@ const run = async () => {
     frameworkInstall(choices.framework, result.appDir, tool)
     installers.setup(result.appDir, choices)
 
-    output.info('Installing packages...', 'bold')
+    output.cliLog('')
+    output.info('Installing packages...')
     installers.packages(result.appDir, choices.hide_opencollective)
 
     // Finish up
-    output.success('All set!', 'bold')
+    clear()
+    output.heading()
+    output.success('All set!\r\n')
     output.finalize(choices.appName, result.appDir)
   } catch (e) {
     output.error(e.message)

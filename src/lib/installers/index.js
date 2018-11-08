@@ -16,24 +16,23 @@ const setup = (setupDir, data) => {
   const oldGitignore = `${setupDir}/_gitignore`
   const newGitignore = `${setupDir}/.gitignore`
 
-  const oldEslint = `${setupDir}/_.eslintrc.js`
-  const newEslint = `${setupDir}/.eslintrc.js`
-
-  const mainJs = `${setupDir}/src/main.js`
-
   try {
     fs.moveSync(oldPkg, newPkg)
     fs.moveSync(oldGitignore, newGitignore)
-    fs.moveSync(oldEslint, newEslint)
     fs.moveSync(oldBabelConf, newBabelConf)
     ejs.renderFile(newPkg, data, {async: false}, (err, str) => { io.rewriteFile(err, str, newPkg) })
     ejs.renderFile(newBabelConf, data, {async: false}, (err, str) => { io.rewriteFile(err, str, newBabelConf)})
-    ejs.renderFile(mainJs, data, {async: false}, (err, str) => { io.rewriteFile(err, str, mainJs)})
+
     if (data.nuxt) {
       const oldNuxtConfig = `${setupDir}/_nuxt.config`
       const newNuxtConfig = `${setupDir}/nuxt.config.js`
       fs.moveSync(oldNuxtConfig, newNuxtConfig)
       ejs.renderFile(newNuxtConfig, data, {async: false}, (err, str) => { io.rewriteFile(err, str, newNuxtConfig) })
+    } else {
+      const oldMainJs = `${setupDir}/src/_main.js`
+      const newMainJs = `${setupDir}/src/main.js`
+      fs.moveSync(oldMainJs, newMainJs)
+      ejs.renderFile(newMainJs, data, {async: false}, (err, str) => { io.rewriteFile(err, str, newMainJs)})
     }
   } catch (e) {
     throw e

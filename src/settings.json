@@ -1,4 +1,5 @@
 {
+  "projectName": "Vue Bare Apper",
   "defaultJs": {
     "name": "latest",
     "value": "js"

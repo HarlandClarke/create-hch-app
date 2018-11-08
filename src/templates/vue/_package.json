@@ -7,60 +7,57 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"<% if (eslint) { %>,
-"lint": "vue-cli-service lint"<%} %>,
-"test:unit": "vue-cli-service test:unit"
+    "lint": "vue-cli-service lint"<%} %>,
+    "test:unit": "vue-cli-service test:unit"
   },
-"dependencies": {
-"vue": "^2.5.17",
-"vue-router": "^3.0.1",
-"vuex": "^3.0.1"<% if (http === 'axios') {%>,
+  "dependencies": {
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"<% if (http === 'axios') {%>,
     "axios": "~0.18",
     "vue-axios": "~2"<% } else if (http === 'superagent') { %>,
     "superagent": "^4.0.0-beta.5"<% } %><% if (framework === 'foundation') { %>,
+    "vue-custom-element": "^3.2.6",
+    "document-register-element": "^1.13.1",
     "foundation-sites": "~6.5",
     "jquery": ">=2.2.0",
     "what-input": ">=4.1.0"<% } else if (framework === 'bootstrap') { %>,
     "bootstrap-vue": "~2.0",
     "bootstrap": "~4.1.3",
     "jquery": ">=1.9.3",<% } else if (framework === 'vuetify') { %>,
-"vuetify": "~1.3.0"<%} else if (framework === 'quasar') {%><%} %><% if (validator === 'vuelidate') {
+    "vuetify": "~1.3.0"<%} else if (framework === 'quasar') {%><%} %><% if (validator === 'vuelidate') {
 %>,
-"vuelidate": "^0.7.4"<% } %>
+    "vuelidate": "^0.7.4"<% } %>
   },
   "devDependencies": {
-"@babel/core": "^7.1.5",
+    "@babel/core": "^7.1.5",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
-"vue-template-compiler": "^2.5.17",
-"jest": "^23.6.0",
-"@vue/cli-plugin-unit-jest": "^3.0.5",
-"@vue/test-utils": "^1.0.0-beta.20"<% if (standard_version) { %>,
-"standard-version": "^4.4.0"<%} %><% if (eslint) {
-%>,
+    "vue-template-compiler": "^2.5.17",
+    "jest": "^23.6.0",
+    "@vue/cli-plugin-unit-jest": "^3.0.5",
+    "@vue/test-utils": "^1.0.0-beta.20"<% if (standard_version) { %>,
+    "standard-version": "^4.4.0"<%} %><% if (eslint) { %>,
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
-"@vue/eslint-config-standard": "^4.0.0",
-"@vue/cli-plugin-eslint": "^3.0.5"<%} %><% if (lang === 'ts') {%>,
-"@vue/cli-plugin-typescript": "^3.0.5",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^3.0.5"<%} %><% if (lang === 'ts') {%>,
+    "@vue/cli-plugin-typescript": "^3.0.5",
     "typescript": "^3.1.5",
-"ts-loader": "^5.3.0",
-"@types/jest": "^23.1.4"<%} else if (lang === 'es2015') {%>,
+    "ts-loader": "^5.3.0",
+    "@types/jest": "^23.1.4"<%} else if (lang === 'es2015') {%>,
     "@babel/preset-es2015": "^7.0.0-beta.53"<% } else if (lang === 'es2016') { %>,
     "@babel/preset-es2016": "^7.0.0-beta.53"<% } else if (lang === 'es2017') { %>,
     "@babel/preset-es2017": "^7.0.0-beta.53"<% } else { %>,
-"@babel/preset-env": "^7.1.0"<%} %><% if (framework === 'vuetify' || css === 'stylus') {%>,
+    "@babel/preset-env": "^7.1.0"<%} %><% if (framework === 'vuetify' || css === 'stylus') {%>,
     "stylus": "^0.54.5",
-"stylus-loader": "^3.0.2"<%
-} %>,
-"css-loader": "^1.0.1"<% if (css === 'scss') {%>,
-"node-sass": "^4.9.4",
-"sass-loader": "^7.1.0"<%
-} else if (css === 'less') {%>,
-"less": "^3.0.4",
-"less-loader": "^4.1.0"<%
-} %><% if (framework === 'vuetify') {%>,
-"vuetify-loader": "~1.0.5"<%
-} %>
+    "stylus-loader": "^3.0.2"<% } %>,
+    "css-loader": "^1.0.1"<% if (css === 'scss') {%>,
+    "node-sass": "^4.9.4",
+    "sass-loader": "^7.1.0"<% } else if (css === 'less') {%>,
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0"<% } %><% if (framework === 'vuetify') {%>,
+    "vuetify-loader": "~1.0.5"<% } %>
   }<% if (eslint) { %>,
   "eslintConfig": {
     "root": true,
