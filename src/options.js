@@ -1,5 +1,5 @@
-import {cli} from './lib/installers'
-import {validHttpLibs, validFrameworks, validLangChoices} from './settings'
+import { cli } from './lib/installers'
+import { validCssPreprocessors, validFrameworks, validHttpLibs, validLangChoices, validValidators } from './settings'
 
 const optionDefinitions = [
   {
@@ -32,16 +32,22 @@ const optionDefinitions = [
   {
     name: 'framework',
     alias: 'u',
-    type: value => (validFrameworks.find(value)) ? value : 'quasar',
+    type: value => (validFrameworks.find(value.toLowerCase())) ? value : '',
     multiple: false
     // defaultValue: 'quasar'
   },
   {
     name: 'http',
     alias: 'h',
-    type: value => (validHttpLibs.find(value)) ? value : 'axios',
+    type: value => (validHttpLibs.find(value.toLowerCase())) ? value : '',
     multiple: false
     // defaultValue: 'axios'
+  },
+  {
+    name: 'css',
+    alias: 'c',
+    type: value => (validCssPreprocessors.find(value.toLowerCase())) ? value : '',
+    multiple: false
   },
   {
     name: 'polyfill',
@@ -54,6 +60,20 @@ const optionDefinitions = [
     alias: 'e',
     type: Boolean
     // defaultValue: true
+  },
+  {
+    name: 'validator',
+    type: value => (validValidators.find(value.toLowerCase())) ? value : '',
+    multiple: false
+  },
+  {
+    name: 'use_standard_version',
+    type: Boolean
+  },
+  {
+    name: 'hide_opencollective',
+    type: Boolean,
+    defaultValue: false
   }
 ]
 

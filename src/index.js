@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 // import lib from './lib'
-import {cli, installers, output} from './lib'
+import { cli, installers, output } from './lib'
 import clear from 'clear'
 import commandLineArgs from 'command-line-args'
-import {optionDefinitions} from './options'
+import { optionDefinitions } from './options'
 
 const baseInstall = (appName, useNuxt) => {
   let result
@@ -17,12 +17,13 @@ const baseInstall = (appName, useNuxt) => {
 
   return result
 }
-const frameworkInstall = (framework, to) => {
-  installers.frameworks[framework.toLowerCase()](to)
+const frameworkInstall = (framework, to, tool) => {
+  installers.frameworks[framework.toLowerCase()](to, tool)
 }
 
 const run = async () => {
   // typical intro stuff
+  clear()
   output.intro()
   // parse command line args, then
   const options = commandLineArgs(optionDefinitions, {stopAtFirstUnknown: true})
@@ -36,27 +37,29 @@ const run = async () => {
 
   clear()
   output.heading()
-  output.cliLog('Ready to go! Installing your project...', 'blue', ['bold', 'underline'])
+  output.success('Ready to go! Installing your project...\r\n')
 
   try {
 
     if (choices.nuxt) {
-      output.info('Installing Nuxt.js...', 'bold')
+      output.info('Installing Nuxt.js...')
     } else {
-      output.info('Creating a generic Vue project...', 'bold')
+      output.info('Creating a normal Vue project...')
     }
 
     let result = baseInstall(choices.appName, choices.nuxt)
-    if (choices.nuxt) {
-      frameworkInstall(choices.framework, result.appDir)
-    }
+    const tool = (choices.nuxt) ? 'nuxt' : 'vue'
+    frameworkInstall(choices.framework, result.appDir, tool)
     installers.setup(result.appDir, choices)
 
-    output.info('Installing packages...', 'bold')
-    // installers.packages(result.appDir)
+    output.cliLog('')
+    output.info('Installing packages...')
+    installers.packages(result.appDir, choices.hide_opencollective)
 
     // Finish up
-    output.success('All set!', 'bold')
+    clear()
+    output.heading()
+    output.success('All set!\r\n')
     output.finalize(choices.appName, result.appDir)
   } catch (e) {
     output.error(e.message)

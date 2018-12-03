@@ -1,30 +1,30 @@
-import {spawnSync} from 'child_process'
+import { spawnSync } from 'child_process'
 import CLIError from '../errors'
 import io from '../io'
 import path from 'path'
 
-const copyFrameworkToProject = (framework, to) => {
+const copyFrameworkToProject = (framework, to, tool) => {
   try {
-    const from = path.resolve(__dirname + `../../../templates/frameworks/${framework}`)
+    const from = path.resolve(__dirname + `../../../templates/frameworks/${tool}/${framework}`)
     io.copyContents(from, to)
   } catch (e) {
     throw new CLIError(1, e)
   }
 }
 
-const bootstrap = (to) => {
-  copyFrameworkToProject('bootstrap', to)
+const bootstrap = (to, tool) => {
+  copyFrameworkToProject('bootstrap', to, tool)
 }
 
-const foundation = (to) => {
-  copyFrameworkToProject('foundation', to)
+const foundation = (to, tool) => {
+  copyFrameworkToProject('foundation', to, tool)
 }
 
-const vuetify = (to) => {
-  copyFrameworkToProject('vuetify', to)
+const vuetify = (to, tool) => {
+  copyFrameworkToProject('vuetify', to, tool)
 }
 
-const quasar = (to) => {
+const quasar = (to, tool) => {
   // Coming soon
   // copyFrameworkToProject('quasar', to)
 }

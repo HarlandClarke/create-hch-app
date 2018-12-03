@@ -32,6 +32,15 @@ const getQuestionsToPrompt = (currentOptions) => {
   if (!hasOption('http')) {
     questions.push(choice.http)
   }
+  if (!hasOption('css')) {
+    questions.push(choice.css)
+  }
+  if (!hasOption('validator')) {
+    questions.push(choice.validator)
+  }
+  if (!hasOption('standard_version')) {
+    questions.push(choice.standard_version)
+  }
   return inquirer.prompt(questions)
 }
 

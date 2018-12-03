@@ -1,5 +1,5 @@
 import slug from 'slug'
-import {defaultJs} from '../settings.json'
+import { defaultJs } from '../settings.json'
 
 const appName = {
   type: 'input',
@@ -73,6 +73,17 @@ const framework = {
   default: 'foundation'
 }
 
+const css = {
+  type: 'list',
+  name: 'css',
+  message: 'Which CSS preprocessor will you use?',
+  choices: [
+    {name: 'SCSS', short: 'SCSS', value: 'scss'},
+    {name: 'LESS', short: 'LESS', value: 'less'},
+    {name: 'Stylus', short: 'Stylus', value: 'stylus'}
+  ]
+}
+
 const http = {
   type: 'list',
   name: 'http',
@@ -99,6 +110,24 @@ const eslint = {
   default: true
 }
 
+const standard_version = {
+  type: 'confirm',
+  name: 'standard_version',
+  message: 'Use standard-version for versioning?',
+  default: true
+}
+
+const validator = {
+  type: 'list',
+  name: 'validator',
+  message: 'Which validator will you use?',
+  choices: [
+    {name: 'Vuelidate', short: 'Vuelidate', value: 'vuelidate'},
+    {name: 'None', short: 'None', value: 'none'}
+  ],
+  default: 'vuelidate'
+}
+
 
 export default {
   appName,
@@ -108,6 +137,9 @@ export default {
   language,
   useNuxt,
   http,
+  css,
   polyfill,
-  eslint
+  eslint,
+  standard_version,
+  validator
 }

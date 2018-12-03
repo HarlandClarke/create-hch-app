@@ -9,6 +9,7 @@ module.exports = {
     'arrow-parens': ['off'],
     semi: ['error', 'never'],
     quotes: ['error', 'single'],
+    'no-console': ['off'],
     'no-undef': ['warn'],
     'no-unused-vars': ['warn']
   },

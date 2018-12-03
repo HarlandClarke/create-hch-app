@@ -1,5 +1,6 @@
 import chalk from 'chalk'
 import figlet from 'figlet'
+import { projectName } from '../settings'
 
 const sendMessage = (message, color, styles, useBg = false) => {
   let writer = chalk
@@ -24,43 +25,43 @@ const sendMessage = (message, color, styles, useBg = false) => {
 }
 
 const heading = () => {
-  console.log(
-    chalk.magenta(figlet.textSync('Vue Bare Apper', {horizontalLayout: 'controlled smushing'}))
-    + '\r\n'
-  )
+  const options = {horizontalLayout: 'controlled smushing'}
+  console.log(chalk`{blue ${figlet.textSync(projectName, options)}}\r\n`)
 }
 
 const intro = () => {
-  console.log(
-    chalk.blue.bold('create-bare-vue-app') + '\r\n'
-  )
+  heading()
 }
 
 const cliLog = (message, color = 'white', styles = []) => {
   console.log(sendMessage(message, color, styles))
 }
 
-const error = (message, styles = []) => {
-  console.log(sendMessage(message, 'red', styles))
+const error = (message) => {
+  console.log(chalk`{white.bgRed.bold  ERROR } ${message}`)
 }
 
-const info = (message, styles = []) => {
-  console.log(sendMessage(message, 'cyan', styles))
+const info = (message) => {
+  console.log(chalk`{white.bgBlue.bold  INFO } ${message}`)
 }
 
-const success = (message, styles = []) => {
-  console.log(sendMessage(message, 'green', styles))
+const success = (message) => {
+  console.log(chalk`{white.bgGreen.bold  SUCCESS } ${message}`)
 }
 
-const warning = (message, styles = []) => {
-  console.log(sendMessage(message, 'yellow', styles))
+const warning = (message) => {
+  console.log(chalk`{white.bgYellow.bold  WARNING } ${message}`)
 }
 
-const finalize = (app, projectDir) => {
+const finalize = (app, projectDir, nuxt) => {
   info(`Your project ${app} has been installed to: ${projectDir}\r\n`)
-  cliLog('To get started, do:\r\n')
-  console.log(chalk`\t{blue.bold $} cd ${projectDir}`)
-  console.log(chalk`\t{blue.bold $} npm run dev\r\n\r\n`)
+  cliLog('To get started, run:\r\n')
+  console.log(chalk`{blue.bold $} cd ${projectDir}`)
+  if (nuxt) {
+    console.log(chalk`{blue.bold $} npm run dev\r\n\r\n`)
+  } else {
+    console.log(chalk`{blue.bold $} npm run serve\r\n`)
+  }
 }
 
 export default {
